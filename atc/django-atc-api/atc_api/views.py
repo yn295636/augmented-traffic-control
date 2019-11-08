@@ -225,8 +225,8 @@ class TokenApi(APIView):
         # 3 days in seconds
         duration = 3 * 24 * 60 * 60
 
-        # if 'duration' in request.query_params:
-        #     duration = int(request.query_params['duration'])
+        if 'duration' in request.query_params:
+            duration = int(request.query_params['duration'])
 
         address = get_client_ip(request)
 
