@@ -53,7 +53,7 @@ class AtcdTOTP(pyotp.TOTP):
 
 
 class AccessManager(object):
-    ACCESS_TOKEN_INTERVAL = 60 * 60 * 24 * 7
+    ACCESS_TOKEN_INTERVAL = 60 * 60 * 12
 
     def __init__(self, secure=True):
         self._ip_to_totp_map = {}
