@@ -32,7 +32,7 @@ var TokenFrame = React.createClass({
   getToken: function() {
     this.props.client.getToken(function (result) {
       if (result.status >= 200 && result.status < 300) {
-        valid_until = new Date(result.json.valid_until*1000).toLocaleTimeString();
+        valid_until = new Date(result.json.valid_until*1000).toLocaleString();
         if (result.json.valid_until - Math.floor(new Date().getTime() / 1000) < 0) {
           if (!this.oos_notified) {
             this.props.notify("warn", "The time on the ATC server is out of sync.");
