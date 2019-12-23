@@ -102,30 +102,29 @@ files = /etc/supervisor/conf.d/*.conf
 3. Create supervisor service config file */etc/supervisor/conf.d/atcui.conf*
 ```
 [program:atcd]
-directory=[PATH_TO_PROJECT_ROOT]
-command=start_atcd.sh
-user=root
+command=[PATH_TO_PROJECT_ROOT]/start_atcd.sh
 autostart=true
 autorestart=true
 startretries=3
 stopasgroup=true
-stdout_logfile=/var/log/atc/atcd_std.log
-stderr_logfile=/var/log/atc/atcd_err.log
+stopsignal=QUIT
+redirect_stderr=true
+stdout_logfile=/var/log/atc/atcd.log
 ```
 4. Create supervisor service config file */etc/supervisor/conf.d/atcd.conf*
 ```
 [program:atcui]
-directory=[PATH_TO_PROJECT_ROOT]
-command=start_atcui.sh
-user=root
+command=[PATH_TO_PROJECT_ROOT]/start_atcui.sh
 autostart=true
 autorestart=true
 startretries=3
 stopasgroup=true
-stdout_logfile=/var/log/atc/atcui_std.log
-stderr_logfile=/var/log/atc/atcui_err.log
+stopsignal=QUIT
+redirect_stderr=true
+stdout_logfile=/var/log/atc/atcui.log
 ```
-5. Reload supervisor
+5. Make folder *atc* under */var/log* with sudo
+6. Reload supervisor
 ```bash
 sudo supervisorctl reload
 sudo supervisorctl start atcd atcui
