@@ -126,7 +126,7 @@ stdout_logfile=/var/log/atc/atcui.log
 5. Make folder *atc* under */var/log* with sudo
 6. Reload supervisor
 ```bash
-sudo supervisorctl reload
+sudo supervisorctl update
 sudo supervisorctl start atcd atcui
 ```
 
